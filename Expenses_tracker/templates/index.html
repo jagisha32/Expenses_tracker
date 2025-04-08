@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body class="container mt-4"> 
+    <h2 class="text-center">Personal Expense Tracker</h2>
+    
+    <form action="/add" method="POST" class="mb-3">
+        <input type="text" name="date" placeholder="Date (YYYY-MM-DD)" required class="form-control">
+        <input type="text" name="category" placeholder="Category" required class="form-control mt-2">
+        <input type="number" name="amount" placeholder="Amount" required class="form-control mt-2">
+        <input type="text" name="description" placeholder="Description" class="form-control mt-2">
+        <button type="submit" class="btn btn-success mt-2">Add Expense</button>
+    </form>
+
+    <h3>Expense List</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Date</th><th>Category</th><th>Amount</th><th>Description</th>
+        </tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense["Date"] }}</td>
+            <td>{{ expense["Category"] }}</td>
+            <td>{{ expense["Amount"] }}</td>
+            <td>{{ expense["Description"] }}</td>
+        </tr>
+        {% endfor %}
+    </table> 
+
+    <a href="/analyze" class="btn btn-primary">Analyze Expenses</a>
+</body>
+</html>
